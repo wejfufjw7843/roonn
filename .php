@@ -1,43 +1,26 @@
 <?php
+def celsius_to_fahrenheit(celsius):
+    fahrenheit = celsius * 9/5 + 32
+    return fahrenheit
 
-// Заранее заданные значения логина и пароля
-$correct_username = 'admin';
-$correct_password = 'password123';
+def fahrenheit_to_celsius(fahrenheit):
+    celsius = (fahrenheit - 32) * 5/9
+    return celsius
 
-// Проверяем, была ли отправлена форма
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+print("Выберите вариант конвертации температуры:")
+print("1. Из градусов Цельсия в градусы Фаренгейта")
+print("2. Из градусов Фаренгейта в градусы Цельсия")
 
-    // Проверяем введенные значения с заданными
-    if ($username === $correct_username && $password === $correct_password) {
-        echo 'Добро пожаловать!';
-    } else {
-        echo 'Ошибка входа';
-    }
-}
-?>
+choice = int(input("Ваш выбор (1/2): "))
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Простая система входа</title>
-</head>
-<body>
-
-<h1>Вход на сайт</h1>
-
-<form method="post">
-    <label for="username">Логин:</label><br>
-    <input type="text" id="username" name="username"><br><br>
-
-    <label for="password">Пароль:</label><br>
-    <input type="password" id="password" name="password"><br><br>
-
-    <button type="submit">Войти</button>
-</form>
-
-</body>
-</html>
-
+if choice == 1:
+    celsius = float(input("Введите температуру в градусах Цельсия: "))
+    fahrenheit = celsius_to_fahrenheit(celsius)
+    print(f"Температура в градусах Фаренгейта: {fahrenheit}")
+elif choice == 2:
+    fahrenheit = float(input("Введите температуру в градусах Фаренгейта: "))
+    celsius = fahrenheit_to_celsius(fahrenheit)
+    print(f"Температура в градусах Цельсия: {celsius}")
+else:
+    print("Некорректный выбор. Пожалуйста, выберите 1 или 2.")
 ?>
